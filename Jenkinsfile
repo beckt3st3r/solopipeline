@@ -36,9 +36,9 @@ pipeline {
             sh 'echo $DEVICE > device3.txt'
           }
         }
-        stage('') {
+        stage('error') {
           steps {
-            build 'item2'
+            build(job: 'item2', propagate: true)
           }
         }
       }
