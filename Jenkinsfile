@@ -42,6 +42,7 @@ pipeline {
               env.b = build(job: 'item2', propagate: false,
                parameters: [string(name: 'passed_build_number_param', value: String.valueOf(PERSON))]).result
             }
+            echo "$env.b"
             if(env.b == 'FAILURE'){
               echo "First job failed"
               currentBuild.result = 'UNSTABLE' // of FAILURE
