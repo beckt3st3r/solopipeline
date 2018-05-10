@@ -37,12 +37,10 @@ pipeline {
           }
         }
         stage('error') {
-          steps {
-            b = build(job: "item2", propagate: false,
-                     parameters: [string(name: 'PERSON', value: String.valueOf(PERSON))]).result
-            if(b == 'FAILURE') {
-               echo "First job failed"
-               currentBuild.result = 'UNSTABLE' // of FAILURE
+          b = build(job: "item2", propagate: false, parameters: [string(name: 'PERSON', value: String.valueOf(PERSON))]).result
+          if(b == 'FAILURE') {
+            echo "First job failed"
+            currentBuild.result = 'UNSTABLE' // of FAILURE
             }
           }
         }
