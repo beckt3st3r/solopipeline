@@ -4,6 +4,7 @@ pipeline {
     stage('Config') {
       steps {
         sh 'echo nothing'
+        sh 'echo $PERSON'
       }
     }
   }
