@@ -38,7 +38,7 @@ pipeline {
         }
         stage('error') {
           steps {
-            build(job: 'item2', propagate: true)
+            build(job: 'item2', propagate: false)
           }
         }
       }
