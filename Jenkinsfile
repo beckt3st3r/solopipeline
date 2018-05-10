@@ -7,13 +7,15 @@ pipeline {
         sh 'echo $PERSON'
       }
     }
-    stage('') {
+    stage('error') {
       environment {
         DEVICE = 'ABIGDEVICE'
       }
       steps {
-        sh 'cd build'
-        sh './prebuild.sh'
+        sh '''cd build
+
+'''
+        sh './build/prebuild.sh'
       }
     }
   }
