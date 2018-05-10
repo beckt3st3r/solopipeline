@@ -36,24 +36,20 @@ pipeline {
             sh 'echo $DEVICE > device3.txt'
           }
         }
+        stage('') {
+          steps {
+            build 'item2'
+          }
+        }
       }
     }
     stage('Build') {
-      parallel {
-        stage('Build') {
-          environment {
-            TYPE = 'normal'
-          }
-          steps {
-            sh './build/build.sh'
-            sh 'DEVICE=$(cat device.txt) && echo $DEVICE'
-          }
-        }
-        stage('') {
-          steps {
-            build(propagate: true, job: 'item2')
-          }
-        }
+      environment {
+        TYPE = 'normal'
+      }
+      steps {
+        sh './build/build.sh'
+        sh 'DEVICE=$(cat device.txt) && echo $DEVICE'
       }
     }
   }
