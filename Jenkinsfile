@@ -43,6 +43,7 @@ pipeline {
                parameters: [string(name: 'passed_build_number_param', value: String.valueOf(PERSON))]).result
             }
             echo "$env.b"
+            echo LOOK HERE
           }
         }
       }
