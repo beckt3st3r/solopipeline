@@ -39,12 +39,21 @@ pipeline {
       }
     }
     stage('Build') {
-      environment {
-        TYPE = 'normal'
-      }
-      steps {
-        sh './build/build.sh'
-        sh 'DEVICE=$(cat device.txt) && echo $DEVICE'
+      parallel {
+        stage('Build') {
+          environment {
+            TYPE = 'normal'
+          }
+          steps {
+            sh './build/build.sh'
+            sh 'DEVICE=$(cat device.txt) && echo $DEVICE'
+          }
+        }
+        stage('') {
+          steps {
+            build(propagate: true, job: 'item2')
+          }
+        }
       }
     }
   }
