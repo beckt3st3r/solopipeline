@@ -41,7 +41,6 @@ pipeline {
           if(b == 'FAILURE') {
             echo "First job failed"
             currentBuild.result = 'UNSTABLE' // of FAILURE
-            }
           }
         }
       }
