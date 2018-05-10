@@ -44,7 +44,8 @@ pipeline {
                      parameters: [string(name: 'PERSON', value: String.valueOf(PERSON))]).result
             if(b == 'FAILURE') {
                echo "First job failed"
-               currentBuild.result = 'UNSTABLE' // of FAILURE            
+               currentBuild.result = 'UNSTABLE' // of FAILURE
+            }
           }
         }
       }
