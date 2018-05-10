@@ -38,7 +38,8 @@ pipeline {
         }
         stage('error') {
           steps {
-            build(job: 'item2', propagate: false)
+            build(job: 'item2', propagate: false,
+               parameters: [string(name: 'passed_build_number_param', value: String.valueOf(PERSON))])
           }
         }
       }
