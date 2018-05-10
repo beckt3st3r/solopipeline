@@ -7,15 +7,32 @@ pipeline {
         sh 'echo $PERSON'
       }
     }
-    stage('error') {
-      environment {
-        DEVICE = 'ABIGDEVICE'
-      }
-      steps {
-        sh '''cd build
-
-'''
-        sh './build/prebuild.sh'
+    stage('PreBuild') {
+      parallel {
+        stage('PreBuild') {
+          environment {
+            DEVICE = 'ABIGDEVICE'
+          }
+          steps {
+            sh './build/prebuild.sh'
+          }
+        }
+        stage('PreBuildDev2') {
+          environment {
+            DEVICE = 'device2'
+          }
+          steps {
+            sh './build/prebuild.sh'
+          }
+        }
+        stage('PreBuildDev3') {
+          environment {
+            DEVICE = 'Device3'
+          }
+          steps {
+            sh './build/prebuild.sh'
+          }
+        }
       }
     }
   }
