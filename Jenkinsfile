@@ -15,7 +15,7 @@ pipeline {
           }
           steps {
             sh './build/prebuild.sh'
-            sh 'echo $DEVICE > device.txt  && echo \'cat device.txt\''
+            sh 'echo $DEVICE > device.txt'
           }
         }
         stage('PreBuildDev2') {
@@ -44,7 +44,7 @@ pipeline {
       }
       steps {
         sh './build/build.sh'
-        sh 'DEVICE=\'cat device.txt\' && echo $DEVICE'
+        sh 'DEVICE=$(cat device.txt) && echo $DEVICE'
       }
     }
   }
