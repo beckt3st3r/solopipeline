@@ -15,6 +15,7 @@ pipeline {
           }
           steps {
             sh './build/prebuild.sh'
+            sh 'echo $DEVICE > device.txt'
           }
         }
         stage('PreBuildDev2') {
@@ -23,6 +24,7 @@ pipeline {
           }
           steps {
             sh './build/prebuild.sh'
+            sh 'echo $DEVICE > device2.txt'
           }
         }
         stage('PreBuildDev3') {
@@ -31,13 +33,18 @@ pipeline {
           }
           steps {
             sh './build/prebuild.sh'
+            sh 'echo $DEVICE > device3.txt'
           }
         }
       }
     }
     stage('Build') {
+      environment {
+        TYPE = 'normal'
+      }
       steps {
         sh './build/build.sh'
+        sh 'device=\'cat device.txt\' && echo device'
       }
     }
   }
