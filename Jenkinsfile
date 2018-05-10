@@ -35,6 +35,11 @@ pipeline {
         }
       }
     }
+    stage('Build') {
+      steps {
+        sh './build/build.sh'
+      }
+    }
   }
   parameters {
     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
