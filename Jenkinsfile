@@ -42,8 +42,7 @@ pipeline {
               env.b = build(job: 'item2', propagate: false,
                parameters: [string(name: 'passed_build_number_param', value: String.valueOf(PERSON))]).result
             }
-            echo "$env.b"
-            echo LOOK HERE
+            echo $env.b
           }
         }
       }
