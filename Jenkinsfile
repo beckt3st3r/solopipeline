@@ -44,7 +44,7 @@ pipeline {
       }
       steps {
         sh './build/build.sh'
-        sh 'device=\'cat device.txt\' && echo device'
+        sh 'DEVICE=\'cat device.txt\' && echo $DEVICE'
       }
     }
   }
