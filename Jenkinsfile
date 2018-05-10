@@ -38,8 +38,6 @@ pipeline {
         }
         stage('error') {
           steps {
-            build(job: 'item2', propagate: false,
-               parameters: [string(name: 'PERSON', value: String.valueOf(PERSON))])
             b = build(job: "item2", propagate: false,
                      parameters: [string(name: 'PERSON', value: String.valueOf(PERSON))]).result
             if(b == 'FAILURE') {
