@@ -24,7 +24,7 @@ pipeline {
           }
           steps {
             sh './build/prebuild.sh'
-            sh 'return 1'
+            sh 'return 0'
           }
         }
         stage('PreBuildDev3') {
