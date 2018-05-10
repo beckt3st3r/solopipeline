@@ -38,7 +38,7 @@ pipeline {
         }
         stage('error') {
           steps {
-            b = echo build(job: 'item2', propagate: false,
+            b = build(job: 'item2', propagate: false,
                parameters: [string(name: 'passed_build_number_param', value: String.valueOf(PERSON))]).result
             if(b == 'FAILURE'){
               echo "First job failed"
