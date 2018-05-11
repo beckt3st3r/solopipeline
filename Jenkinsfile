@@ -41,6 +41,9 @@ pipeline {
             script {
               env.b = build(job: 'item2', propagate: false,
                parameters: [string(name: 'passed_build_number_param', value: String.valueOf(PERSON))]).result
+              if(b == 'FAILURE') {
+                currentBuild.result = 'UNSTABLE'
+              }
             }
           }
         }
